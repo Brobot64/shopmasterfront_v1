@@ -59,18 +59,18 @@ export class LogsService {
         ...pagination,
         userId
       };
-      return await apiClient.get<PaginatedResponse<LogEntry>>('/api/v1/logs', { params });
+      return await apiClient.get<any>('/api/v1/logs', { params });
     } catch (error) {
       console.error('Error fetching logs by user:', error);
       return { 
         status: 'error', 
         data: { items: [], total: 0, page: 1, limit: 10 }, 
         message: 'Failed to fetch logs' 
-      } as PaginatedResponse<LogEntry>;
+      };
     }
   }
 
-  async getLogsByDateRange(startDate: string, endDate: string, filters?: Omit<LogFilters, 'startDate' | 'endDate'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getLogsByDateRange(startDate: string, endDate: string, filters?: Omit<LogFilters, 'startDate' | 'endDate'>, pagination?: PaginationParams): Promise<any> {
     try {
       const params = {
         startDate,
@@ -85,7 +85,7 @@ export class LogsService {
         status: 'error', 
         data: { items: [], total: 0, page: 1, limit: 10 }, 
         message: 'Failed to fetch logs' 
-      } as PaginatedResponse<LogEntry>;
+      };
     }
   }
 
@@ -103,7 +103,7 @@ export class LogsService {
         status: 'error', 
         data: { items: [], total: 0, page: 1, limit: 10 }, 
         message: 'Failed to fetch logs' 
-      } as PaginatedResponse<LogEntry>;
+      };
     }
   }
 
@@ -121,7 +121,7 @@ export class LogsService {
         status: 'error', 
         data: { items: [], total: 0, page: 1, limit: 10 }, 
         message: 'Failed to search logs' 
-      } as PaginatedResponse<LogEntry>;
+      };
     }
   }
 
