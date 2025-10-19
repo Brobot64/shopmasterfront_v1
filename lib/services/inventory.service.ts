@@ -177,13 +177,13 @@ export class InventoryService {
     averageStockLevel: number;
     turnoverRate: number;
   }>> {
-    try {
+    try { 
       const response = await this.getInventory({ outletId });
       const items = response.data || [];
       
       const stats = {
         totalItems: items.length,
-        totalValue: items.reduce((sum, item) => sum + (item.quantity * (item.unitPrice || 0)), 0),
+        totalValue: 0 //items.reduce((sum, item) => sum + (item.quantity * (item.unitPrice || 0)), 0),
         lowStockCount: items.filter(item => item.quantity <= (item.minStockLevel || 0)).length,
         outOfStockCount: items.filter(item => item.quantity === 0).length,
         averageStockLevel: items.length > 0 ? items.reduce((sum, item) => sum + item.quantity, 0) / items.length : 0,
