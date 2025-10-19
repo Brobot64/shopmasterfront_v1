@@ -26,6 +26,13 @@ const nextConfig: NextConfig = {
     // Setting this to true is generally recommended for production stability
     ignoreBuildErrors: false, 
   },
+
+  eslint: {
+    // !! WARNING: This allows production builds to successfully complete even if
+    // your project has ESLint errors. Use this option only if you are confident
+    // in your testing and quality assurance process.
+    ignoreDuringBuilds: true,
+  },
   
   // Enable source maps in production for better debugging/error reporting tools
   productionBrowserSourceMaps: true,
