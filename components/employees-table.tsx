@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
-import { UserWithDetails } from "@/services"
+import { UserWithDetails } from "@/services/users"
 
 interface EmployeesTableProps {
   users: UserWithDetails[]
