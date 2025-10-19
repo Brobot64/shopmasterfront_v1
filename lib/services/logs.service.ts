@@ -17,7 +17,7 @@ export interface PaginationParams {
 }
 
 export class LogsService {
-  async getLogs(filters?: LogFilters, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getLogs(filters?: LogFilters, pagination?: PaginationParams): Promise<any> {
     try {
       const params = {
         ...filters,
@@ -30,7 +30,7 @@ export class LogsService {
         status: 'error', 
         data: { items: [], total: 0, page: 1, limit: 10 }, 
         message: 'Failed to fetch logs' 
-      } as PaginatedResponse<LogEntry>;
+      };
     }
   }
 
