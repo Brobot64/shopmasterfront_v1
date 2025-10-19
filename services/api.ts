@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with base configuration
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/v1',
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'https://shopmasterback-v1.onrender.com/api/v1' || 'http://localhost:5000/api/v1',
   withCredentials: true, // Important for cookie-based auth
   timeout: 10000,
   headers: {
