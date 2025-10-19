@@ -173,9 +173,9 @@ export class ProductsService {
       // This would need to be implemented on the backend or filtered client-side
       const result = await this.getProducts(filters);
       const lowStockProducts = result.data?.products?.filter(product => 
-        product.stockQuantity !== undefined && 
-        product.minStockLevel !== undefined && 
-        product.stockQuantity <= product.minStockLevel
+        product.quantity !== undefined && 
+        product.reOrderPoint !== undefined && 
+        product.quantity <= product.reOrderPoint
       ) || [];
       
       return {
