@@ -202,12 +202,12 @@ export class InventoryService {
   }
 
   // Placeholder methods for features not implemented in backend
-  async getInventoryMovements(inventoryId: string, pagination?: PaginationParams): Promise<PaginatedResponse<any>> {
+  async getInventoryMovements(inventoryId: string, pagination?: PaginationParams): Promise<any> {
     return {
       status: 'error',
       data: { items: [], total: 0, page: 1, limit: 10 },
       message: 'Inventory movements not implemented'
-    } as PaginatedResponse<any>;
+    };
   }
 
   async bulkUpdateInventory(updates: any[]): Promise<ApiResponse<Inventory[]>> {
