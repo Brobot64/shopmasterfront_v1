@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ✅ Import your fonts from Google */
+/* @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap'); */
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant custom (&:is(.custom *));
+
+* {
+  font-family: "Work Sans", sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* ✅ Font theming */
+  --font-primary: "Work Sans", sans-serif;
+  --font-secondary: "Figtree", sans-serif;
+  --font-support: "Outfit", sans-serif;
+  --font-sans: var(--font-primary), var(--font-secondary), var(--font-support), sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-lightBgRed: #f75050a6;
+  --color-darkRedTxt: #6b0c0c;
+  --color-lightBgGreen: #8df87ea6;
+  --color-darkGreenTxt: #0c6b0c;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+:root {
+  --radius: 0.5rem; /* rounded corners */
+
+  /* Light Theme: [C5D7BD, 9FB8AD, 383E56, FB743E] */
+  --background: #c5d7bd;
+  --foreground: #383e56;
+  --primary: #383e56;
+  --primary-foreground: #c5d7bd;
+  --secondary: #9fb8ad;
+  --secondary-foreground: #383e56;
+  --accent: #fb743e;
+  --accent-foreground: #ffffff;
+
+  --card: #c5d7bd;
+  --card-foreground: #383e56;
+  --popover: #c5d7bd;
+  --popover-foreground: #383e56;
+  --muted: #9fb8ad;
+  --muted-foreground: #383e56;
+  --destructive: #fb743e;
+  --border: #9fb8ad;
+  --input: #9fb8ad;
+  --ring: #fb743e;
+
+  --sidebar: #c5d7bd;
+  --sidebar-foreground: #383e56;
+  --sidebar-primary: #383e56;
+  --sidebar-primary-foreground: #c5d7bd;
+  --sidebar-accent: #fb743e;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #9fb8ad;
+  --sidebar-ring: #fb743e;
+
+  /* Toast colors */
+  --success-bg: 142 76% 36%;
+  --success-border: 142 76% 36%;
+  --warning-bg: 45 93% 47%;
+  --warning-border: 45 93% 47%;
+  --info-bg: 211 84% 64%;
+  --info-border: 211 84% 64%;
+}
+
+.dark {
+  --background: #222831;
+  --foreground: #dfd0b8;
+  --primary: #393e46;
+  --primary-foreground: #dfd0b8;
+  --secondary: #948979;
+  --secondary-foreground: #222831;
+  --accent: #948979;
+  --accent-foreground: #222831;
+  --destructive: #e83f25;
+  --border: #393e46;
+  --input: #393e46;
+  --ring: #948979;
+
+  --card: #222831;
+  --card-foreground: #dfd0b8;
+  --popover: #222831;
+  --popover-foreground: #dfd0b8;
+  --muted: #393e46;
+  --muted-foreground: #dfd0b8;
+
+  --sidebar: #222831;
+  --sidebar-foreground: #dfd0b8;
+  --sidebar-primary: #393e46;
+  --sidebar-primary-foreground: #dfd0b8;
+  --sidebar-accent: #948979;
+  --sidebar-accent-foreground: #222831;
+  --sidebar-border: #393e46;
+  --sidebar-ring: #948979;
+}
+
+.custom {
+  --background: #d3ca79;
+  --foreground: #a62c2c;
+  --primary: #e83f25;
+  --primary-foreground: #d3ca79;
+  --secondary: #ea7300;
+  --secondary-foreground: #a62c2c;
+  --accent: #e83f25;
+  --accent-foreground: #d3ca79;
+  --destructive: #a62c2c;
+  --border: #ea7300;
+  --input: #ea7300;
+  --ring: #e83f25;
+
+  --card: #d3ca79;
+  --card-foreground: #a62c2c;
+  --popover: #d3ca79;
+  --popover-foreground: #a62c2c;
+  --muted: #ea7300;
+  --muted-foreground: #d3ca79;
+
+  --sidebar: #d3ca79;
+  --sidebar-foreground: #a62c2c;
+  --sidebar-primary: #e83f25;
+  --sidebar-primary-foreground: #d3ca79;
+  --sidebar-accent: #ea7300;
+  --sidebar-accent-foreground: #a62c2c;
+  --sidebar-border: #ea7300;
+  --sidebar-ring: #e83f25;
+}
+
+.material {
+  --background: #FFFFFF;
+  --foreground: #1C252E;
+  --primary: #fda92d;
+  --primary-foreground: #1C252E;
+  --secondary: #8E33FF;
+  --secondary-foreground: #FFFFFF;
+  --accent: #22C55E;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF5630;
+  --border: #DFE3E8;
+  --input: #F4F6F8;
+  --ring: #fda92d;
+
+  --card: #FFFFFF;
+  --card-foreground: #1C252E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1C252E;
+  --muted: #F4F6F8;
+  --muted-foreground: #637381;
+
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #1C252E;
+  --sidebar-primary: #fda92d;
+  --sidebar-primary-foreground: #1C252E;
+  --sidebar-accent: #8E33FF;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #DFE3E8;
+  --sidebar-ring: #fda92d;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans); /* ✅ Apply your font stack */
+  }
+  
+  /* Add shadows to all components */
+  .shadow-component {
+    @apply shadow-md hover:shadow-lg transition-shadow duration-200;
+  }
+  
+  /* Cursor pointer for all links */
+  a, button, [role="button"], [tabindex="0"] {
+    @apply cursor-pointer;
+  }
+  
+  /* Glass morphism for dropdowns */
+   .glass-morphism {
+     backdrop-filter: blur(20px);
+     -webkit-backdrop-filter: blur(20px);
+     background: rgba(255, 255, 255, 0.1);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+   }
+  
+  .dark .glass-morphism {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .material .glass-morphism {
+    background: rgba(253, 169, 45, 0.1);
+    border: 1px solid rgba(253, 169, 45, 0.2);
+  }
+  
+  .custom .glass-morphism {
+    background: rgba(211, 202, 121, 0.1);
+    border: 1px solid rgba(211, 202, 121, 0.2);
+  }
+  
+  /* Apply shadows to common components */
+  .card, .dialog, .popover, .dropdown-menu, .select-content, .sheet {
+    @apply shadow-lg;
+  }
+  
+  /* Enhanced shadows for interactive elements */
+  button, .button {
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  /* Input field shadows */
+  input, textarea, select {
+    @apply shadow-sm focus:shadow-md transition-shadow duration-200;
+  }
+}
