@@ -198,7 +198,7 @@ export class ProductsService {
       // This would need to be implemented on the backend or filtered client-side
       const result = await this.getProducts(filters);
       const outOfStockProducts = result.data?.products?.filter(product => 
-        product.stockQuantity === 0
+        product.quantity === 0
       ) || [];
       
       return {
