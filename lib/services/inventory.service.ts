@@ -183,7 +183,7 @@ export class InventoryService {
       
       const stats = {
         totalItems: items.length,
-        totalValue: 0 //items.reduce((sum, item) => sum + (item.quantity * (item.unitPrice || 0)), 0),
+        totalValue: 0, //items.reduce((sum, item) => sum + (item.quantity * (item.unitPrice || 0)), 0),
         lowStockCount: items.filter(item => item.quantity <= (item.minStockLevel || 0)).length,
         outOfStockCount: items.filter(item => item.quantity === 0).length,
         averageStockLevel: items.length > 0 ? items.reduce((sum, item) => sum + item.quantity, 0) / items.length : 0,
