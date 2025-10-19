@@ -52,7 +52,7 @@ export class LogsService {
     }
   }
 
-  async getLogsByUser(userId: string, filters?: Omit<LogFilters, 'userId'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getLogsByUser(userId: string, filters?: Omit<LogFilters, 'userId'>, pagination?: PaginationParams): Promise<any> {
     try {
       const params = {
         ...filters,
@@ -78,7 +78,7 @@ export class LogsService {
         ...filters,
         ...pagination
       };
-      return await apiClient.get<PaginatedResponse<LogEntry>>('/api/v1/logs', { params });
+      return await apiClient.get<any>('/api/v1/logs', { params });
     } catch (error) {
       console.error('Error fetching logs by date range:', error);
       return { 
@@ -89,14 +89,14 @@ export class LogsService {
     }
   }
 
-  async getLogsByLevel(level: 'info' | 'warn' | 'error' | 'debug', filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getLogsByLevel(level: 'info' | 'warn' | 'error' | 'debug', filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<any> {
     try {
       const params = {
         ...filters,
         ...pagination,
         level
       };
-      return await apiClient.get<PaginatedResponse<LogEntry>>('/api/v1/logs', { params });
+      return await apiClient.get<any>('/api/v1/logs', { params });
     } catch (error) {
       console.error('Error fetching logs by level:', error);
       return { 
@@ -107,14 +107,14 @@ export class LogsService {
     }
   }
 
-  async searchLogs(query: string, filters?: Omit<LogFilters, 'search'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async searchLogs(query: string, filters?: Omit<LogFilters, 'search'>, pagination?: PaginationParams): Promise<any> {
     try {
       const params = {
         ...filters,
         ...pagination,
         search: query
       };
-      return await apiClient.get<PaginatedResponse<LogEntry>>('/api/v1/logs', { params });
+      return await apiClient.get<any>('/api/v1/logs', { params });
     } catch (error) {
       console.error('Error searching logs:', error);
       return { 
@@ -125,7 +125,7 @@ export class LogsService {
     }
   }
 
-  async getRecentLogs(limit: number = 50): Promise<ApiResponse<LogEntry[]>> {
+  async getRecentLogs(limit: number = 50): Promise<ApiResponse<any[]>> {
     try {
       const response = await this.getLogs({}, { page: 1, limit });
       return {
@@ -135,28 +135,28 @@ export class LogsService {
       };
     } catch (error) {
       console.error('Error fetching recent logs:', error);
-      return { status: 'error', data: [], message: 'Failed to fetch recent logs' } as ApiResponse<LogEntry[]>;
+      return { status: 'error', data: [], message: 'Failed to fetch recent logs' } as ApiResponse<any[]>;
     }
   }
 
-  async getErrorLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getErrorLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<any> {
     return this.getLogsByLevel('error', filters, pagination);
   }
 
-  async getWarningLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getWarningLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<any> {
     return this.getLogsByLevel('warn', filters, pagination);
   }
 
-  async getInfoLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getInfoLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<any> {
     return this.getLogsByLevel('info', filters, pagination);
   }
 
-  async getDebugLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<PaginatedResponse<LogEntry>> {
+  async getDebugLogs(filters?: Omit<LogFilters, 'level'>, pagination?: PaginationParams): Promise<any> {
     return this.getLogsByLevel('debug', filters, pagination);
   }
 
   // Legacy method for backward compatibility
-  async getLogsLegacy(): Promise<ApiResponse<{ logs: LogEntry[] }>> {
+  async getLogsLegacy(): Promise<ApiResponse<{ logs: any[] }>> {
     try {
       const response = await this.getLogs();
       return {
@@ -166,7 +166,7 @@ export class LogsService {
       };
     } catch (error) {
       console.error('Error fetching logs (legacy):', error);
-      return { status: 'error', data: { logs: [] }, message: 'Failed to fetch logs' } as ApiResponse<{ logs: LogEntry[] }>;
+      return { status: 'error', data: { logs: [] }, message: 'Failed to fetch logs' } as ApiResponse<{ logs: any[] }>;
     }
   }
 }
